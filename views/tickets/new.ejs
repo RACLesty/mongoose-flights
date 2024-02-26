@@ -1,0 +1,15 @@
+<%- include('../partials/header', { title: 'New Ticket' }) %>
+
+<form action="/flights/<%= flight._id %>/tickets" method="post">
+    <label for="seat">Seat:</label>
+    <select id="seat" name="seat" required>
+        <% availableSeats.forEach(seat => { %>
+            <option value="<%= seat %>"><%= seat %></option>
+        <% }); %>
+    </select><br>
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" required min="1"><br>
+    <button type="submit">Create Ticket</button>
+</form>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,25 @@
+<%- include('../partials/header', { title: 'Flight Details' }) %>
+
+<p>Airline: <%= flight.airline %></p>
+<p>Airport: <%= flight.airport %></p>
+<p>Flight No.: <%= flight.flightNo %></p>
+<p>Departure Date: <%= flight.departs %></p>
+
+<% if (flight.destinations && flight.destinations.length > 0) { %>
+    <p>Arrival Date: <%= flight.destinations[0].arrival %></p>
+<% } else { %>
+    <p>No arrival date available</p>
+<% } %>
+
+<h2>Tickets</h2>
+<ul>
+    <% tickets.forEach(ticket => { %>
+        <li>Seat: <%= ticket.seat %>, Price: $<%= ticket.price %></li>
+    <% }); %>
+</ul>
+
+<a href="/flights/<%= flight._id %>/tickets/new">New Ticket</a>
+
+
+<%- include('../partials/footer') %>
+
